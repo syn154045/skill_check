@@ -1,0 +1,29 @@
+version: '3.9'
+
+services:
+  rails:
+    build:
+      context: .
+      dockerfile: containers/rails/Dockerfile
+    command: containers/rails/entrypoint.sh
+    volumes:
+      - .:/app
+      - bundle_cache:/usr/local/bundle
+      - rails_yarn_cache:/app/node_modules
+    ports:
+      - "3000:3000"
+
+  webpacker:
+    build:
+      context: ./frontend
+      dockerfile: ../containers/webpacker/Dockerfile
+    volumes:
+      - ./frontend:/app
+      - webpacker_yarn_cache:/app/node_modules
+    ports:
+      - "3035:3035"
+
+volumes:
+  bundle_cache:
+  rails_yarn_cache:
+  webpacker_yarn_cache:
