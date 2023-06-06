@@ -22,6 +22,7 @@
 ### システム要件（フロントエンドエンジニア応募の方）
 - Vue.js を導入してるので、それを使って実装してください。
   - インゲージでは Vue.js + TypeScript を使用しています
+- デザインは以下のこの [figma ファイル](https://www.figma.com/file/w8srUnZf6T0YO59iVZf6dD/Bulma-CSS-UI-Kit-v2.01-(Community)?type=design&node-id=302-16027&t=4wOci2PH1D97ezfo-0) に合わせてください。
 - プラン表にある情報は、Web API サーバにリクエストして情報を取得するようにしてください。
   - プラン情報を返す API  は実装済です。
 - 計算結果は、`クライアント`で計算してください。
