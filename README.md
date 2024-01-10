@@ -11,8 +11,8 @@ Docker を事前にインストールください。
 
 ```shell
 # fork した場合は、それに合わせて URL を変更してください
-git clone git@github.com:ingage/interview-skill-check.git
-cd interview-skill-check
+git clone git@github.com:ingage/engineer-skill-check.git
+cd engineer-skill-check
 
 docker-compose build
 docker-compose up -d
