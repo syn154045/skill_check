@@ -5,7 +5,8 @@ import vue from '@vitejs/plugin-vue'
 export default defineConfig({
   plugins: [vue()],
   server: {
+    host:   true,
     port:   5173,
-    origin: `https://0.0.0.0:5173` // assets request origin
+    origin: `http://0.0.0.0:5173` // assets request origin
   },
 })
