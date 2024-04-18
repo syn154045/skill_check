@@ -13,17 +13,17 @@ services:
     ports:
       - "3000:3000"
 
-  webpacker:
+  vite:
     build:
       context: ./frontend
-      dockerfile: ../containers/webpacker/Dockerfile
+      dockerfile: ../containers/vite/Dockerfile
     volumes:
       - ./frontend:/app
-      - webpacker_yarn_cache:/app/node_modules
+      - vite_yarn_cache:/app/node_modules
     ports:
-      - "3035:3035"
+      - "5173:5173"
 
 volumes:
   bundle_cache:
   rails_yarn_cache:
-  webpacker_yarn_cache:
+  vite_yarn_cache:
