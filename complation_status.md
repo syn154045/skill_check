@@ -12,7 +12,7 @@
 > done
 - 入力値チェックは、サーバ、クライアント の両方で行なうようにしてください。
 > server: done
-> client: 
+> client: done
 
 
 ## Frontend
