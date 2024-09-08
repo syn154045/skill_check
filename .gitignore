@@ -32,3 +32,6 @@ frontend/node_modules
 
 # Ignore dist folder
 /frontend/dist
+
+# Ignore .DS_Store
+.DS_Store

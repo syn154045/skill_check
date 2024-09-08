@@ -1,1 +1,67 @@
-Hello World!
+<h1>料金シミュレーション</h1>
+
+<form id="calculateForm">
+  <div>
+    <label for="users">ユーザー数 :</label>
+    <input type="number" id="users" name="users">
+  </div>
+  <div>
+    <label for="mboxes">メールボックス数 :</label>
+    <input type="number" id="mboxes" name="mboxes">
+  </div>
+  <button type="submit">計算</button>
+</form>
+
+<div id="result"></div>
+
+<%= csrf_meta_tags %>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('calculateForm');
+  const resultDiv = document.getElementById('result');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const users = document.getElementById('users').value;
+    const mboxes = document.getElementById('mboxes').value;
+    
+    // 未入力の場合
+    if (users === '' || mboxes === '') {
+      e.preventDefault();
+      alert('ユーザー数とメールボックス数を入力してください。');
+      return false;
+    }
+    const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+    fetch('/api/v1/calculate', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': csrfToken
+      },
+      body: JSON.stringify({ users: users, mboxes: mboxes })
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.error) {
+        resultDiv.innerHTML = `<p style="color: red;">${data.error}</p>`;
+      } else {
+        resultDiv.innerHTML = `
+          <h2>計算結果</h2>
+          <p>プラン: ${data.plan}</p>
+          <p>詳細: ${data.detail}</p>
+          <p>追加ユーザー数: ${data.extra_user_count}</p>
+          <p>追加メールボックス数: ${data.extra_mbox_count}</p>
+          <p>合計金額: ${data.total_price}円</p>
+        `;
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      resultDiv.innerHTML = '<p style="color: red;">エラーが発生しました。</p>';
+    });
+  });
+});
+</script>
