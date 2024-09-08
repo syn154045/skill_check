@@ -4,7 +4,7 @@ class Api::V1::PlanController < ApplicationController
   
   def index
     # CORS 対策
-    response.set_header('access-control-allow-origin', 'http://localhost:3035')
+    response.set_header('access-control-allow-origin', 'http://localhost:5173')
     response.set_header('access-control-allow-methods', 'GET,POST,HEAD,OPTIONS')
     
     plan = Plan.new

@@ -29,7 +29,7 @@
 
 ## Optional
 - Rubocop や ESlint といった静的解析ツールを導入してください。
-> 
+> rubocop導入
 - RSpec や Vitest (Jest) といった単体テストツールを導入してください。
 
 - TypeScript や CSS フレームワークを導入してください。
@@ -45,4 +45,6 @@
 - 計算結果を保存し、後から簡単に確認できるようにしてください。
 
 ## Additional
-- 
+- rack-corsの導入、vue.js->railsのcors対策を実施
+    > POSTMAN -> railsでは確認できたが、 
+    > vite -> railsではPOSTメソッドのpreflightリクエストで422エラーとなり再現できず、現在も検証中
