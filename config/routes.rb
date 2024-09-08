@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
-
-  get 'test', to: 'test#index'
-  get 'plans', to: 'api/v1/plan#index'
-
+  # NON API
+  get 'test' => 'test#index'
+  
+  # API
+  namespace 'api' do
+    namespace 'v1' do
+      get 'plans' => 'plan#index'
+      post 'calculate' => 'plan#calculate'
+    end
+  end
 end
