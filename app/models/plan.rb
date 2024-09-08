@@ -29,7 +29,7 @@ class Plan
 
   def self.calculate(users, mboxes)
     # Lightプランの上限値を超過した場合に除外
-    valid_plans = PLANS.map do |plan, details|
+    valid_plans = PLANS.map { |plan, details|
       # 追加ユーザ数
       extra_user_count = [users - details[:initial_user_count], 0].max
       # 追加受信箱数
@@ -57,7 +57,7 @@ class Plan
       total_price = details[:base_monthly_cost] + extra_cost
       
       [plan, details, extra_user_count, extra_mbox_count, total_price]
-    end.compact
+    }.compact
     
     valid_plans.min_by { |_, _, _, _, total_price| total_price }
       # .tap { |result| result.pop }     # total_priceを除外
